@@ -29,7 +29,7 @@ const StartPage = (props) => {
     });
   };
 
-  const onClickHandler = (id) => {
+  const moveItemUp = (id) => {
     setListItems((prevState) => {
       const items = [...prevState];
       const index = items.findIndex((item) => item.id === id);
@@ -39,7 +39,7 @@ const StartPage = (props) => {
     });
   };
 
-  const MoveDownHandler = (id) => {
+  const moveItemDown = (id) => {
     setListItems((prevState) => {
       const items = [...prevState];
       const index = items.findIndex((item) => item.id === id);
@@ -49,7 +49,7 @@ const StartPage = (props) => {
     });
   };
 
-  const MoveUpHandler = (id) => {
+  const deleteItem = (id) => {
     setListItems((prevState) => {
       const updatedListItems = prevState.filter((item) => item.id !== id);
       return updatedListItems;
@@ -61,9 +61,9 @@ const StartPage = (props) => {
       <ListItems
         listItems={listItems}
         onChange={onChangeInputHandler}
-        onClick={onClickHandler}
-        onDoubleClick={MoveDownHandler}
-        onRightClick={MoveUpHandler}
+        onClick={moveItemUp}
+        onDoubleClick={moveItemDown}
+        onRightClick={deleteItem}
       />
     </Card>
   );
